@@ -17,9 +17,9 @@ var board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
-  for (let i = 0; i < HEIGHT; i++) {
+  for (let i = 0; i < WIDTH; i++) {
     board[i] = [];
-    for (let j = 0; j < WIDTH; j++) {
+    for (let j = 0; j < HEIGHT; j++) {
       board[i].push(null);
     }
   }
@@ -61,6 +61,7 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
+  
   return board[x].findIndex(function(y){
     return y === null; 
   });  
@@ -75,12 +76,14 @@ function placeInTable(y, x) {
   pieceSlot.appendChild(gamePiece); 
   gamePiece.classList.add('piece');
   gamePiece.style.backgroundColor = 'blue';
+  board[x][y] = 1; 
 }
 
 /** endGame: announce game end */
 
 function endGame(msg) {
   // TODO: pop up alert message
+  alert(msg);
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -88,6 +91,7 @@ function endGame(msg) {
 function handleClick(evt) {
   // get x from ID of clicked cell
   var x = +evt.target.id;
+
 
   // get next spot in column (if none, ignore click)
   var y = findSpotForCol(x);
