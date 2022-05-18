@@ -70,15 +70,7 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
-  
-  // return board[x].findIndex(function(y){
-  //   return y === null; 
-  // });  
-
-  // console.log(board[x][0]);
   for (let i = board[x].length-1; i >= 0; i--) {
-    console.log(i);
-    console.log(board[x][i], 'board[x][i]')
     if (board[x][i] === null) {
       return i;
     } 
@@ -90,18 +82,19 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  
   const gamePiece = document.createElement('div');
   const pieceSlot = document.getElementById(`${y}-${x}`);
   pieceSlot.appendChild(gamePiece); 
   gamePiece.classList.add('piece');
-
-
+  console.log(currPlayer, 'current player');
+  
   if(currPlayer === 1) {
     gamePiece.classList.add('p1'); 
   } else {
     gamePiece.classList.add('p2');
   }
-  board[x][y] = 1; 
+  board[x][y] = currPlayer; 
 }
 
 /** endGame: announce game end */
@@ -143,10 +136,17 @@ function handleClick(evt) {
   // TODO: check if all cells in board are filled; if so call, call endGame
   
 
-  checkFull(board);
+  
 
   // switch players
   // TODO: switch currPlayer 1 <-> 2
+  
+  
+  if (currPlayer === 1) {
+    currPlayer = 2; 
+  } else {
+    currPlayer = 1; 
+  }
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
