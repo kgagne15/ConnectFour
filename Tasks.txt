@@ -1,7 +1,7 @@
-1. makeBoard function
+1. makeBoard function -- done
 2. makeHTMLBoard function 
     - add first line that sets board variable to 
-    the HTML board DOM node
+    the HTML board DOM node -- done
     -add comments
 3. placeInTable
     -add a div inside the correct td cell in the HTML game board
