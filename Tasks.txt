@@ -1,0 +1,25 @@
+1. makeBoard function
+2. makeHTMLBoard function 
+    - add first line that sets board variable to 
+    the HTML board DOM node
+    -add comments
+3. placeInTable
+    -add a div inside the correct td cell in the HTML game board
+    -this div should have the piece class on it
+    -this class should be different for player one and player two
+    -update CSS to make div round not square
+    -update CSS to make div different colors depending on player class
+4. handleClick 
+    -fix so the click updates board variable with player number
+    -add a check for "is the entire board filled"
+    -add code to switch currPlayer between 1 and 2 (ternary function)
+5. findSpotForCol
+    -fix so that the y coordinate of the lowest empty spot in the game board
+    is returned (or null if column is filled)
+6. endGame
+    -ensure that the endGame function runs and alerts user of winner when
+    game is over
+
+FURTHER STUDY
+1. Add comments to checkForWin function
+2. Add animation for the piece drop down
