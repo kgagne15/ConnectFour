@@ -75,7 +75,11 @@ function placeInTable(y, x) {
   const pieceSlot = document.getElementById(`${y}-${x}`);
   pieceSlot.appendChild(gamePiece); 
   gamePiece.classList.add('piece');
-  gamePiece.style.backgroundColor = 'blue';
+  if(currPlayer === 1) {
+    gamePiece.style.backgroundColor = 'blue';
+  } else {
+    gamePiece.style.backgroundColor = 'red';
+  }
   board[x][y] = 1; 
 }
 
@@ -89,6 +93,12 @@ function endGame(msg) {
 /** handleClick: handle click of column top to play piece */
 
 function handleClick(evt) {
+
+  if (currPlayer === 1) {
+    currPlayer = 2
+  } else {
+    currPlayer = 1; 
+  }
   // get x from ID of clicked cell
   var x = +evt.target.id;
 
