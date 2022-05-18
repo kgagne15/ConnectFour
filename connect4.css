@@ -27,3 +27,11 @@
 #column-top td:hover {
   background-color: gold;
 }
+
+.p1 {
+  background-color: red;
+}
+
+.p2 {
+  background-color: blue;
+}

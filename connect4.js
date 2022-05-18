@@ -26,6 +26,15 @@ function makeBoard() {
   return board;
 }
 
+////
+// function checkFull(arr) {
+//   return (arr.every(function(y){
+//     return y === 1; 
+//   })) 
+// }
+/////
+
+
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
@@ -62,9 +71,19 @@ function makeHtmlBoard() {
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
   
-  return board[x].findIndex(function(y){
-    return y === null; 
-  });  
+  // return board[x].findIndex(function(y){
+  //   return y === null; 
+  // });  
+
+  // console.log(board[x][0]);
+  for (let i = board[x].length-1; i >= 0; i--) {
+    console.log(i);
+    console.log(board[x][i], 'board[x][i]')
+    if (board[x][i] === null) {
+      return i;
+    } 
+  }
+  return null;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
@@ -75,10 +94,12 @@ function placeInTable(y, x) {
   const pieceSlot = document.getElementById(`${y}-${x}`);
   pieceSlot.appendChild(gamePiece); 
   gamePiece.classList.add('piece');
+
+
   if(currPlayer === 1) {
-    gamePiece.style.backgroundColor = 'blue';
+    gamePiece.classList.add('p1'); 
   } else {
-    gamePiece.style.backgroundColor = 'red';
+    gamePiece.classList.add('p2');
   }
   board[x][y] = 1; 
 }
@@ -94,11 +115,11 @@ function endGame(msg) {
 
 function handleClick(evt) {
 
-  if (currPlayer === 1) {
-    currPlayer = 2
-  } else {
-    currPlayer = 1; 
-  }
+  // if (currPlayer === 1) {
+  //   currPlayer = 2
+  // } else {
+  //   currPlayer = 1; 
+  // }
   // get x from ID of clicked cell
   var x = +evt.target.id;
 
@@ -120,6 +141,9 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
+  
+
+  checkFull(board);
 
   // switch players
   // TODO: switch currPlayer 1 <-> 2
