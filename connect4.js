@@ -87,7 +87,6 @@ function placeInTable(y, x) {
   const pieceSlot = document.getElementById(`${y}-${x}`);
   pieceSlot.appendChild(gamePiece); 
   gamePiece.classList.add('piece');
-  console.log(currPlayer, 'current player');
   
   if(currPlayer === 1) {
     gamePiece.classList.add('p1'); 
@@ -103,6 +102,26 @@ function endGame(msg) {
   // TODO: pop up alert message
   alert(msg);
 }
+
+////
+function boardFull(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+    return arr[i].every(function(x) {
+      console.log(x, 'x');
+      if (x === null) {
+        return false;
+      }
+      return true; 
+    })
+  }
+}
+////
+
+
+
+
+
 
 /** handleClick: handle click of column top to play piece */
 
@@ -134,8 +153,10 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  
-
+ 
+  if (boardFull(board)) {
+    endGame('This game is a tie!');
+  } 
   
 
   // switch players
