@@ -26,21 +26,12 @@ function makeBoard() {
   return board;
 }
 
-////
-// function checkFull(arr) {
-//   return (arr.every(function(y){
-//     return y === 1; 
-//   })) 
-// }
-/////
-
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.getElementById('board');
-  console.log('htmlboard', htmlBoard);
   // TODO: add comment for this code
 
   var top = document.createElement("tr");
@@ -118,20 +109,10 @@ function boardFull(arr) {
 }
 ////
 
-
-
-
-
-
 /** handleClick: handle click of column top to play piece */
 
 function handleClick(evt) {
 
-  // if (currPlayer === 1) {
-  //   currPlayer = 2
-  // } else {
-  //   currPlayer = 1; 
-  // }
   // get x from ID of clicked cell
   var x = +evt.target.id;
 
@@ -158,10 +139,8 @@ function handleClick(evt) {
     endGame('This game is a tie!');
   } 
   
-
   // switch players
   // TODO: switch currPlayer 1 <-> 2
-  
   
   if (currPlayer === 1) {
     currPlayer = 2; 
