@@ -34,10 +34,18 @@ function makeHtmlBoard() {
   const htmlBoard = document.getElementById('board');
   // TODO: add comment for this code
 
+  //new table row is created as the top variable
+  //top is then given an id of 'column-top'
+  //top is then given an event listener so on click the handleClick function is run
   var top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
+  //new table data is created as a headCell variable 
+  //headCell is then given an id of 'x'
+  //headCell is then appended to the top row created above
+  //this functionality occurs once for every instance of width
+  //when loop ends, the top tr with all tds is appended to the htmlboard
   for (var x = 0; x < WIDTH; x++) {
     var headCell = document.createElement("td");
     headCell.setAttribute("id", x);
@@ -46,6 +54,13 @@ function makeHtmlBoard() {
   htmlBoard.append(top);
 
   // TODO: add comment for this code
+
+  //for each instance of height a new table row element is created and set to variable row
+  //for every one loop of height, each instance of width is looped
+  //in the inner loop a new table data element is created and set to cell variable
+  //this cell variable is given an id of the y coordinate and x coordinate and then appended to the row
+  //in the outer loop this row, with all the individual tds, is appended to the htmlboard
+  //this repeats for each instance of height
   for (var y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
     for (var x = 0; x < WIDTH; x++) {
@@ -169,11 +184,16 @@ function checkForWin() {
 
   // TODO: read and understand this code. Add comments to help you.
 
+  //for each column, each td is checked according to various winning scenarios
   for (var y = 0; y < HEIGHT; y++) {
     for (var x = 0; x < WIDTH; x++) {
+      //are there 4 in a row horizontally
       var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      //are there 4 in a row vertically
       var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      //are there 4 in a row diagonally going up to the right
       var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+      //are there 4 in a row diagonally going up to the left
       var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
